@@ -2,23 +2,22 @@ import uuid
 
 from django.contrib.auth.models import User
 from django.db import models
-from rest_framework import serializers
 
 
 class Platform(models.Model):
+    id = models.UUIDField(primary_key=True, default=uuid.uuid4, editable=False)
     name = models.CharField(max_length=20, unique=True)
     activeUsers = models.PositiveIntegerField(null=True)
     screen = models.BooleanField(default=True)
     handheld = models.BooleanField(default=True)
     size = models.PositiveSmallIntegerField(null=True)
 
-
-
     def __str__(self):
         return f"Platform: {self.name}"
 
 
 class VideoGame(models.Model):
+    id = models.UUIDField(primary_key=True, default=uuid.uuid4, editable=False)
     name = models.CharField(max_length=50, unique=True)
     releaseYear = models.PositiveSmallIntegerField(blank=True, null=True)
     company = models.CharField(max_length=50)
@@ -31,6 +30,7 @@ class VideoGame(models.Model):
 
 
 class Player(models.Model):
+    id = models.UUIDField(primary_key=True, default=uuid.uuid4, editable=False)
     username = models.CharField(max_length=10, null=True, unique=True)
     age = models.PositiveSmallIntegerField(default=18)
     email = models.CharField(max_length=30, null=True)
