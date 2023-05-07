@@ -79,7 +79,7 @@ DATABASES = {
         'HOST': '34.175.242.49',
         'USER': 'saltylex',
         'PASSWORD': '123',
-        'NAME': 'gameproject',
+        'NAME': 'videogames',
     }
 }
 
