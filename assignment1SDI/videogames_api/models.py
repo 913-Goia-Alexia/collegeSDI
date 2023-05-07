@@ -25,7 +25,7 @@ class VideoGame(models.Model):
     name = models.CharField(max_length=50, unique=True)
     releaseYear = models.PositiveSmallIntegerField(blank=True, null=True)
     company = models.CharField(max_length=50)
-    platform = models.ForeignKey(Platform, on_delete=models.CASCADE)
+    platform = models.ForeignKey(Platform, on_delete=models.CASCADE, to_field='name')
     rating = models.PositiveSmallIntegerField(blank=True, null=True)
     sales = models.IntegerField(blank=True, null=True)
 
