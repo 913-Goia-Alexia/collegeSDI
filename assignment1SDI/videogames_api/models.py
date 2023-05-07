@@ -12,6 +12,11 @@ class Platform(models.Model):
     handheld = models.BooleanField(default=True)
     size = models.PositiveSmallIntegerField(null=True)
 
+    class Meta:
+        db_table = "platform"
+        ordering = ['-name']
+
+
     def __str__(self):
         return f"Platform: {self.name}"
 
@@ -25,6 +30,10 @@ class VideoGame(models.Model):
     rating = models.PositiveSmallIntegerField(blank=True, null=True)
     sales = models.IntegerField(blank=True, null=True)
 
+    class Meta:
+        db_table = "videogame"
+        ordering = ['-name']
+
     def __str__(self):
         return f"Game: {self.name}"
 
@@ -37,6 +46,10 @@ class Player(models.Model):
     gender = models.CharField(max_length=2, default="NB")
     favouriteGenre = models.CharField(max_length=10, null=True)
 
+    class Meta:
+        db_table = "player"
+        ordering = ['-username']
+
     def __str__(self):
         return f"Player: {self.username}"
 
@@ -47,6 +60,10 @@ class PlayerGame(models.Model):
     gamename = models.ForeignKey(VideoGame, on_delete=models.CASCADE)
     hoursPlayed = models.SmallIntegerField(default=0)
     hasSaveFile = models.BooleanField(default=False)
+
+    class Meta:
+        db_table = "playergame"
+        ordering = ['-username']
 
     def __str__(self):
         return f"Game owned by Player data: {self.username} + {self.gamename}"
