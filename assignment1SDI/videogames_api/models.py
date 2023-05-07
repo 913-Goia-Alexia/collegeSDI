@@ -16,7 +16,6 @@ class Platform(models.Model):
         db_table = "platform"
         ordering = ['-name']
 
-
     def __str__(self):
         return f"Platform: {self.name}"
 
