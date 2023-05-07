@@ -75,8 +75,11 @@ WSGI_APPLICATION = 'assignment1SDI.wsgi.application'
 
 DATABASES = {
     'default': {
-        'ENGINE': 'django.db.backends.sqlite3',
-        'NAME': BASE_DIR / 'db.sqlite3',
+        'ENGINE': 'django.db.backends.postgresql_psycopg2',
+        'HOST': '34.175.242.49',
+        'USER': 'saltylex',
+        'PASSWORD': '123',
+        'NAME': 'gameproject',
     }
 }
 
