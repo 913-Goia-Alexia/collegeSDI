@@ -1,3 +1,5 @@
+import math
+
 from django.db.models import Avg
 from django.views.decorators.csrf import csrf_exempt
 from rest_framework import status, generics
@@ -19,9 +21,24 @@ class VideoGameListApiView(APIView):
         """
         List all the video games that can be seen.
         """
+        page_num = int(request.GET.get("page", 1))
+        limit_num = int(request.GET.get("limit", 10))
+        start_num = (page_num - 1) * limit_num
+        end_num = limit_num * page_num
+        search_param = request.GET.get("search")
         videogames = VideoGame.objects.all()
-        serializer = VideoGameSerializer(videogames, many=True)
-        return Response(serializer.data, status=status.HTTP_200_OK)
+        total_movies = videogames.count()
+        if search_param:
+            videogames = videogames.filter(title__icontains=search_param)
+        serializer = VideoGameSerializer(
+            videogames[start_num:end_num], many=True)
+        return Response({
+            "status": "success",
+            "total": total_movies,
+            "page": page_num,
+            "last_page": math.ceil(total_movies / limit_num),
+            "videogames": serializer.data
+        })
 
     # 2. Create new video game
     def post(self, request, *args, **kwargs):
@@ -125,9 +142,24 @@ class PlatformListApiView(APIView):
         """
         List all the platforms that can be seen.
         """
+        page_num = int(request.GET.get("page", 1))
+        limit_num = int(request.GET.get("limit", 10))
+        start_num = (page_num - 1) * limit_num
+        end_num = limit_num * page_num
+        search_param = request.GET.get("search")
         platforms = Platform.objects.all()
-        serializer = PlatformSerializer(platforms, many=True)
-        return Response(serializer.data, status=status.HTTP_200_OK)
+        total_movies = platforms.count()
+        if search_param:
+            platforms = platforms.filter(title__icontains=search_param)
+        serializer = PlatformSerializer(
+            platforms[start_num:end_num], many=True)
+        return Response({
+            "status": "success",
+            "total": total_movies,
+            "page": page_num,
+            "last_page": math.ceil(total_movies / limit_num),
+            "videogames": serializer.data
+        })
 
     # 2. Create new platform
     def post(self, request, *args, **kwargs):
@@ -224,9 +256,24 @@ class PlayerListApiView(APIView):
         """
         List all the platforms that can be seen.
         """
+        page_num = int(request.GET.get("page", 1))
+        limit_num = int(request.GET.get("limit", 10))
+        start_num = (page_num - 1) * limit_num
+        end_num = limit_num * page_num
+        search_param = request.GET.get("search")
         players = Player.objects.all()
-        serializer = PlayerSerializer(players, many=True)
-        return Response(serializer.data, status=status.HTTP_200_OK)
+        total_movies = players.count()
+        if search_param:
+            players = players.filter(title__icontains=search_param)
+        serializer = PlayerSerializer(
+            players[start_num:end_num], many=True)
+        return Response({
+            "status": "success",
+            "total": total_movies,
+            "page": page_num,
+            "last_page": math.ceil(total_movies / limit_num),
+            "videogames": serializer.data
+        })
 
     # 2. Create new platform
     def post(self, request, *args, **kwargs):
@@ -324,9 +371,24 @@ class SaveFileListApiView(APIView):
         """
         List all the platforms that can be seen.
         """
+        page_num = int(request.GET.get("page", 1))
+        limit_num = int(request.GET.get("limit", 10))
+        start_num = (page_num - 1) * limit_num
+        end_num = limit_num * page_num
+        search_param = request.GET.get("search")
         playersgames = PlayerGame.objects.all()
-        serializer = PlayerGameSerializer(playersgames, many=True)
-        return Response(serializer.data, status=status.HTTP_200_OK)
+        total_movies = playersgames.count()
+        if search_param:
+            players = playersgames.filter(title__icontains=search_param)
+        serializer = PlayerGameSerializer(
+            playersgames[start_num:end_num], many=True)
+        return Response({
+            "status": "success",
+            "total": total_movies,
+            "page": page_num,
+            "last_page": math.ceil(total_movies / limit_num),
+            "videogames": serializer.data
+        })
 
     # 2. Create new platform
     def post(self, request, *args, **kwargs):
