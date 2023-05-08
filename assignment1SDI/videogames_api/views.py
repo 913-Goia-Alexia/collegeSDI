@@ -458,6 +458,7 @@ class MultiplePlatformsView(APIView):
 
         return Response({'message': 'Platforms updated successfully.'})
 
+
 """
  {"platform_id_new_list": [{
         "name": "Dead By Deadlight",
