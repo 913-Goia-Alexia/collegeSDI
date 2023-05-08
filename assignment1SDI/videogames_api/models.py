@@ -6,7 +6,7 @@ from django.db import models
 
 class Platform(models.Model):
     id = models.UUIDField(primary_key=True, default=uuid.uuid4, editable=False)
-    name = models.CharField(max_length=20, unique=True)
+    name = models.CharField(max_length=20)
     description = models.CharField(max_length=50, null=True)
     activeUsers = models.PositiveIntegerField(null=True)
     screen = models.BooleanField(default=True)
@@ -23,7 +23,7 @@ class Platform(models.Model):
 
 class VideoGame(models.Model):
     id = models.UUIDField(primary_key=True, default=uuid.uuid4, editable=False)
-    name = models.CharField(max_length=50, unique=True)
+    name = models.CharField(max_length=50)
     releaseYear = models.PositiveSmallIntegerField(blank=True, null=True)
     description = models.CharField(max_length=50, null=True)
     company = models.CharField(max_length=50)
@@ -41,7 +41,7 @@ class VideoGame(models.Model):
 
 class Player(models.Model):
     id = models.UUIDField(primary_key=True, default=uuid.uuid4, editable=False)
-    username = models.CharField(max_length=10, null=True, unique=True)
+    username = models.CharField(max_length=10, null=True)
     age = models.PositiveSmallIntegerField(default=18)
     description = models.CharField(max_length=50, null=True)
     email = models.CharField(max_length=30, null=True)
