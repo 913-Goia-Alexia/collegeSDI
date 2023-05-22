@@ -244,6 +244,7 @@ export default function VideoGames() {
                     <thead>
                     <tr>
                         <th onClick={handleSort}>Name</th>
+                        <th>Description</th>
                         <th onClick={() => {
                             changePage(page + 1)
                         }}>Release Year

@@ -2,7 +2,7 @@ import React, { useEffect, useState } from 'react';
 import { Button } from 'react-bootstrap';
 
 
-export default function PlayerTableRow(props: any) {
+export default function SaveFileTableRow(props: any) {
     let { id, username, age, description, email, gender, favouriteGenre } = props.object
     const handleClick = (e: any) => {
         e.preventDefault()

@@ -13,8 +13,10 @@ export default function CustomNavbar() {
                     <Navbar.Toggle aria-controls="basic-navbar-nav" />
                     <Navbar.Collapse id="basic-navbar-nav">
                         <Nav className="me-auto">
-                            <Nav.Link href="/">Video Games</Nav.Link>
-                            <Nav.Link href="/#/filter">Filter</Nav.Link>
+                            <Nav.Link href="/#/videogames">Video Games</Nav.Link>
+                            <Nav.Link href="/#/platforms">Platforms</Nav.Link>
+                            <Nav.Link href="/#/players">Players</Nav.Link>
+                            <Nav.Link href="/#/savefiles">Savefiles</Nav.Link>
 
 
                         </Nav>

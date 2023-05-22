@@ -3,7 +3,7 @@ import { Button } from 'react-bootstrap';
 
 
 export default function GameTableRow(props: any) {
-    let { game_avg_year, id, name, releaseYear, company, rating, sales, platform } = props.object
+    let { game_avg_year, id,description, name, releaseYear, company, rating, sales, platform } = props.object
     const [platformName, setName] = useState("")
 
     useEffect(() => {
@@ -14,7 +14,7 @@ export default function GameTableRow(props: any) {
 
     const handleClick = (e: any) => {
         e.preventDefault()
-        props.onClick({ game_avg_year, id, name, releaseYear, company, rating, sales, platform })
+        props.onClick({ game_avg_year, id, description,name, releaseYear, company, rating, sales, platform })
     }
 
     const handleDelete = (e: any) => {
@@ -26,6 +26,7 @@ export default function GameTableRow(props: any) {
         <tr key={id} onClick={handleClick}>
             {props.onFilter ? <td>{game_avg_year}</td> : null}
             <td>{name}</td>
+            <td>{description}</td>
             <td>{releaseYear}</td>
             <td>{company}</td>
             <td>{rating}</td>
